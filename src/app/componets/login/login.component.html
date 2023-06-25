@@ -8,12 +8,6 @@
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="loginForm">
 
-          <div>
-            <mat-radio-group formControlName="type" (change)="chooseRadio($event)">
-              <mat-radio-button value="users">student</mat-radio-button>
-              <mat-radio-button value="admin">admin</mat-radio-button>
-            </mat-radio-group>
-          </div>
 
           <!-- user input -->
           <div class="form-outline mb-4">
