@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="text-success my-5">add new exam</h1>
+  <div class="mt-4 col-6 m-auto ">
+    <div *ngIf="nameFlag==false">
+      <label for="examName" class="mb-3">
+        <h3>subject name</h3>
+      </label>
+      <input type="text" id="examName" placeholder="subject name" [(ngModel)]="inpName" class="form-control col-6">
+      <button class="btn btn-success my-4" type="button" (click)="addName()">add exam</button>
+    </div>
+  </div>
+
+  <div class="col-6 m-auto">
+    <form [formGroup]="addExamForm">
+      <div>
+        <input type="text" class="form-control my-5 border-success" placeholder="question body" formControlName="body">
+      </div>
+      <div>
+        <input type="text" class="form-control my-3" placeholder="choice 1" formControlName="Ans1">
+      </div>
+      <div>
+        <input type="text" class="form-control my-3" placeholder="choice 2" formControlName="Ans2">
+      </div>
+      <div>
+        <input type="text" class="form-control my-3" placeholder="choice 3" formControlName="Ans3">
+      </div>
+      <div>
+        <input class="form-control my-3" type="text" placeholder="choice 4" formControlName="Ans4">
+      </div>
+      <select name="" id="" required class="form-select" formControlName="CAns">
+        <option value="{{addExamForm.controls.Ans1.value}}">Ans1</option>
+        <option value="{{addExamForm.controls.Ans2.value}}">Ans2</option>
+        <option value="{{addExamForm.controls.Ans3.value}}">Ans3</option>
+        <option value="{{addExamForm.controls.Ans4.value}}">Ans4</option>
+      </select>
+      <div>
+        <button class="btn btn-success my-4" type="button" (click)="addQuestion()">add Question</button>
+        <button class="btn btn-success my-4" type="button" (click)="saveExam()">save exam</button>
+      </div>
+    </form>
+  </div>
+</div>

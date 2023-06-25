@@ -1,0 +1,75 @@
+<h1 class="text-center my-3">login </h1>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="assets/imgs/6.png" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="loginForm">
+
+          <div>
+            <mat-radio-group formControlName="type" (change)="chooseRadio($event)">
+              <mat-radio-button value="users">student</mat-radio-button>
+              <mat-radio-button value="admin">admin</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <!-- user input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">User Name</label>
+            <input formControlName="userName" type="text" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" />
+            <ng-container *ngIf="usernameControl.touched">
+              <div *ngIf="usernameControl.hasError('required')" class="text-danger">
+                user name is required
+              </div>
+
+              <div *ngIf="usernameControl.hasError('minlength')" class="text-danger">
+                user name must be greater than 3 letter
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Password</label>
+            <input formControlName="password" type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Enter password" />
+
+            <ng-container *ngIf="passwordControl.touched">
+              <div *ngIf="passwordControl.hasError('required')" class="text-danger">
+                password is required
+              </div>
+
+              <div *ngIf="loginFlag == false" class="text-danger">
+                invalid user name or password
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Remember me
+              </label>
+            </div>
+            <a href="#!" class="text-body">Forgot password?</a>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
+              (click)="formSubmit($event)">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a class="link-danger"
+                [routerLink]="['/register']">Register</a>
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Examination system</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/home']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">about us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">contact us </a>
+        </li>
+        <li class="nav-item" *ngIf="data?.role=='users'">
+          <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">take exam </a>
+        </li>
+
+        <li class="nav-item" *ngIf="data?.role=='admin'">
+          <a class="nav-link" [routerLink]="['/addExam']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">add exam </a>
+        </li>
+
+
+      </ul>
+      <ul class="navbar-nav me-5">
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{data?.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="data?.role==null" class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">login</a>
+        </li>
+        <li *ngIf="data?.role!=null" class="nav-item">
+          <a (click)="logout()" class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'text-warning'"
+            [routerLinkActiveOptions]="{exact:true}">logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

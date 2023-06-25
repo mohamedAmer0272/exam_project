@@ -1,0 +1,88 @@
+<h1 class="text-center my-3">Sign Up </h1>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="assets/imgs/7.png" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="registerForm">
+
+
+
+          <!-- email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">email</label>
+            <input required formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" />
+            <ng-container *ngIf="emailControl.touched || FormisValid == false">
+              <div *ngIf="emailControl.hasError('required')" class="text-danger">
+                email is required
+              </div>
+              <div *ngIf="emailFlag==false" class="text-danger">
+                this email already registred
+              </div>
+              <div *ngIf="emailControl.hasError('email')" class="text-danger">
+                invalid email
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- user name input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">User Name</label>
+            <input formControlName="username" type="text" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter user name" required minlength="3" />
+            <ng-container *ngIf="usernameControl.touched || FormisValid == false">
+              <div *ngIf="usernameControl.hasError('required')" class="text-danger">
+                user name is required
+              </div>
+
+              <div *ngIf="usernameControl.hasError('minlength')" class="text-danger">
+                user name must be greater than 3 letter
+              </div>
+            </ng-container>
+          </div>
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Password</label>
+            <input required minlength="3" formControlName="password" type="password" id="form3Example4"
+              class="form-control form-control-lg" placeholder="Enter password" />
+
+            <ng-container *ngIf="passwordControl.touched || FormisValid == false">
+              <div *ngIf="passwordControl.hasError('required')" class="text-danger">
+                password is required
+              </div>
+            </ng-container>
+          </div>
+
+
+
+          <!-- confirm Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">confirm Password</label>
+            <input formControlName="ConfirmPassword" type="password" id="form3Example4"
+              class="form-control form-control-lg" placeholder="Enter password" />
+            <ng-container *ngIf="CpasswordControl.touched || FormisValid == false">
+              <div *ngIf="CpasswordControl.value!==passwordControl.value" class="text-danger">
+                password not match
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button (click)="onSubmit($event)" type="submit" class="btn btn-success btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">register</button>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
