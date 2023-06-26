@@ -36,7 +36,7 @@
                 password is required
               </div>
 
-              <div *ngIf="loginFlag == false" class="text-danger">
+              <div *ngIf="loginFlag == false && !passwordControl.hasError('required')" class="text-danger">
                 invalid user name or password
               </div>
             </ng-container>

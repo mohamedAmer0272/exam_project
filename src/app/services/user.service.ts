@@ -28,4 +28,8 @@ export class UserService {
   loginService(model: any) {
     return this.httpClient.put<any>(`${this.apiLogin}`, model);
   }
+
+  loginServiceGet() {
+    return this.httpClient.get(this.apiLogin);
+  }
 }

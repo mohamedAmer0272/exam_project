@@ -14,6 +14,7 @@ import { RegisterComponent } from './componets/register/register.component';
 import { StudentComponent } from './componets/student/student.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { NewExamComponent } from './componets/new-exam/new-exam.component';
+import { TakeExamComponent } from './componets/take-exam/take-exam.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewExamComponent } from './componets/new-exam/new-exam.component';
     RegisterComponent,
     StudentComponent,
     NewExamComponent,
+    TakeExamComponent,
   ],
   imports: [
     BrowserModule,

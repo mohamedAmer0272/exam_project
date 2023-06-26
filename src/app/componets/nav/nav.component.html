@@ -19,8 +19,8 @@
           <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">contact us </a>
         </li>
-        <li class="nav-item" *ngIf="data?.role=='users'">
-          <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="'text-warning'"
+        <li class="nav-item" *ngIf="data?.role!='admin'">
+          <a class="nav-link" [routerLink]="['/takeExam']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">take exam </a>
         </li>
 

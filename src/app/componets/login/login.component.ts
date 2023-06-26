@@ -49,10 +49,6 @@ export class LoginComponent implements OnInit {
   get typeControl() {
     return this.loginForm.controls.type;
   }
-  chooseRadio(e: any) {
-    this.type = e.value;
-    this.getuser();
-  }
 
   formSubmit(e: any) {
     if (this.loginForm.valid) {
@@ -62,7 +58,7 @@ export class LoginComponent implements OnInit {
           u.password === this.passwordControl.value
         );
       }); // end of index
-      console.log(loginUser);
+      console.log('login user ' + loginUser);
       if (loginUser) {
         const model = {
           username: this.usernameControl.value,
@@ -80,7 +76,6 @@ export class LoginComponent implements OnInit {
           },
         });
       } else {
-        e.preventDefault();
         this.loginFlag = false;
         console.log('no');
       }
