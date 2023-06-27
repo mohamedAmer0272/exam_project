@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ExamService } from 'src/app/services/exam.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ExamService } from 'src/app/services/exam.service';
   styleUrls: ['./new-exam.component.css'],
 })
 export class NewExamComponent {
-  constructor(private examServie: ExamService) {}
+  constructor(private examServie: ExamService, private route: Router) {}
 
   inpName: string = '';
   nameFlag: any = false;
@@ -22,7 +23,6 @@ export class NewExamComponent {
       next: (response) => {
         if (response) {
           console.log(response);
-          alert('add');
           this.exam = response;
           this.nameFlag = true;
         } else console.log(response);
@@ -43,10 +43,10 @@ export class NewExamComponent {
     if (this.addExamForm.valid) {
       const model = {
         body: this.addExamForm.value.body,
-        choice1: this.addExamForm.value.Ans1,
-        choice2: this.addExamForm.value.Ans2,
-        choice3: this.addExamForm.value.Ans3,
-        choice4: this.addExamForm.value.Ans4,
+        choiceA: this.addExamForm.value.Ans1,
+        choiceB: this.addExamForm.value.Ans2,
+        choiceC: this.addExamForm.value.Ans3,
+        choiceD: this.addExamForm.value.Ans4,
         CAns: this.addExamForm.value.CAns,
         ExamID: this.exam.id,
       };
@@ -68,7 +68,10 @@ export class NewExamComponent {
       console.log(this.questions[i]);
       this.examServie.addQuestions(this.questions[i]).subscribe({
         next: (res) => {
-          alert('save success');
+          if (i == this.questions.length - 1) {
+            alert('exam is saved');
+            this.route.navigate(['/addExam']);
+          }
         },
       });
     }

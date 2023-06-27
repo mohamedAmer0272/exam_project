@@ -8,6 +8,7 @@ import { StudentComponent } from './componets/student/student.component';
 import { NewExamComponent } from './componets/new-exam/new-exam.component';
 import { TakeExamComponent } from './componets/take-exam/take-exam.component';
 import { AuthGuard } from './guards/auth.guard';
+import { StartExamComponent } from './componets/start-exam/start-exam.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'admin/:id', component: HomeComponent },
   { path: 'addExam', component: NewExamComponent },
   { path: 'takeExam', component: TakeExamComponent, canActivate: [AuthGuard] },
+  { path: 'startExam/:id', component: StartExamComponent },
 ];
 
 @NgModule({

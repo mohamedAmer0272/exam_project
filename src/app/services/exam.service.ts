@@ -10,6 +10,9 @@ export class ExamService {
   apiQues: string = 'https://localhost:7235/api/Question';
   constructor(private httpclient: HttpClient) {}
 
+  getExams() {
+    return this.httpclient.get(this.apiurl);
+  }
   addExam(model: any) {
     return this.httpclient.post(this.apiurl, model);
   }
@@ -17,7 +20,11 @@ export class ExamService {
   addQuestions(model: any) {
     return this.httpclient.post(this.apiQues, model);
   }
-  getExamByName(n: string) {
-    return this.httpclient.get(`${this.apiurl}/{n}`);
+
+  getExamQuestions(id: number) {
+    return this.httpclient.get(`${this.apiQues}/${id}`);
+  }
+  getExamById(id: number) {
+    return this.httpclient.get(`${this.apiurl}/${id}`);
   }
 }

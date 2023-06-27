@@ -1,1 +1,12 @@
-<p>take-exam works!</p>
+<div class="container row">
+
+  <div class="card col-4 my-5 " *ngFor="let exam of exams">
+    <div class="card-header text-bg-danger">
+      {{exam?.name}}
+    </div>
+    <div class="card-body text-bg-light">
+      <a [routerLink]="['/startExam',exam.id]" [routerLinkActive]="'text-warning'"
+        [routerLinkActiveOptions]="{exact:true}" (click)="startExam()" class="btn btn-success col-6">start exam</a>
+    </div>
+  </div>
+</div>

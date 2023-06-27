@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="col-6 m-auto">
+  <div class="col-6 m-auto" *ngIf="nameFlag==true">
     <form [formGroup]="addExamForm">
       <div>
         <input type="text" class="form-control my-5 border-success" placeholder="question body" formControlName="body">
@@ -34,8 +34,8 @@
         <option value="{{addExamForm.controls.Ans4.value}}">Ans4</option>
       </select>
       <div>
-        <button class="btn btn-success my-4" type="button" (click)="addQuestion()">add Question</button>
-        <button class="btn btn-success my-4" type="button" (click)="saveExam()">save exam</button>
+        <button class="btn btn-success my-4 m-4" type="button" (click)="addQuestion()">add Question</button>
+        <button class="btn btn-success my-4 m-4" type="button" (click)="saveExam()">save exam</button>
       </div>
     </form>
   </div>
