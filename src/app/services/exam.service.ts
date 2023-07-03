@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,6 +9,7 @@ export class ExamService {
   //apiurl: string = 'http://localhost:3000/exam';
   apiurl: string = 'https://localhost:7235/api/Exam';
   apiQues: string = 'https://localhost:7235/api/Question';
+  apiGrade: string = 'https://localhost:7235/api/examGrades';
   constructor(private httpclient: HttpClient) {}
 
   getExams() {
@@ -26,5 +28,11 @@ export class ExamService {
   }
   getExamById(id: number) {
     return this.httpclient.get(`${this.apiurl}/${id}`);
+  }
+  addGrade(model: any) {
+    return this.httpclient.post(this.apiGrade, model);
+  }
+  getGrade(std_id: number, exam_id: number) {
+    return this.httpclient.get(`${this.apiGrade}/${std_id}/${exam_id}`);
   }
 }

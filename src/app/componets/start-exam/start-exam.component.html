@@ -1,36 +1,83 @@
 <div class="row col-5">
   <h4 class="fw-bold text-center mt-3"></h4>
-  <form class=" bg-white px-4" action="" (submit)="finishExam()">
-    <div class="text-bg-light" *ngFor="let q of questions; let i =index">
-      <p class="fw-bold">question {{i+1}} :</p>
+  <form *ngIf="isFinished===false" class=" bg-white px-4" action="" (submit)="finishExam($event)">
+    <div class="list-group" *ngFor="let q of questions; let i =index">
+      <p class="fw-bold mt-4 ">question {{i+1}} :</p>
       <p class="">{{q?.body}}</p>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceA}}" id="radioExample1" />
-        <label class="form-check-label" for="radioExample1">
-          {{q?.choiceA}}
-        </label>
-      </div>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceB}}" id="radioExample2" />
-        <label class="form-check-label" for="radioExample2">
-          {{q?.choiceB}}
-        </label>
-      </div>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceC}}" id="radioExample3" />
-        <label class="form-check-label" for="radioExample3">
-          {{q?.choiceC}}
-        </label>
-      </div>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceD}}" id="radioExample3" />
-        <label class="form-check-label" for="radioExample3">
-          {{q?.choiceD}}
-        </label>
-      </div>
+      <mat-radio-group [(ngModel)]="q.exam" name="question{{i}}">
+        <div><mat-radio-button value="{{q?.choiceA}}">{{q?.choiceA}}</mat-radio-button></div>
+        <div> <mat-radio-button value="{{q?.choiceB}}">{{q?.choiceB}}</mat-radio-button></div>
+        <div> <mat-radio-button value="{{q?.choiceC}}">{{q?.choiceC}}</mat-radio-button></div>
+        <div> <mat-radio-button value="{{q?.choiceD}}">{{q?.choiceD}}</mat-radio-button></div>
+      </mat-radio-group>
     </div>
     <div class="text-end">
       <button type="submit" class="btn btn-primary">finish Exam</button>
     </div>
   </form>
+
+  <div class="text-center my-5 m-auto " [ngClass]="{ 'text-success': g > 50, 'text-danger': g <= 50 }"
+    *ngIf="isFinished===true">
+    <h1>you got </h1>
+    <h1>{{g}} %</h1>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form class=" bg-white px-4" action="" (submit)="finishExam($event)">
+  <div class="text-bg-light" *ngFor="let q of questions; let i =index">
+    <p class="fw-bold">question {{i+1}} :</p>
+    <p class="">{{q?.body}}</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceA}}"
+        id="radioExample1{{i}}" />
+      <label class="form-check-label" for="radioExample1{{i}}">
+        {{q?.choiceA}}
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceB}}"
+        id="radioExample2{{i}}" />
+      <label class="form-check-label" for="radioExample2{{i}}">
+        {{q?.choiceB}}
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceC}}"
+        id="radioExample3{{i}}" />
+      <label class="form-check-label" for="radioExample3{{i}}">
+        {{q?.choiceC}}
+      </label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" name="example{{i}}" value="{{q?.choiceD}}"
+        id="radioExample4{{i}}" />
+      <label class="form-check-label" for="radioExample3{{i}}">
+        {{q?.choiceD}}
+      </label>
+    </div>
+  </div>
+  <div class="text-end">
+    <button type="submit" class="btn btn-primary">finish Exam</button>
+  </div>
+</form> -->

@@ -5,8 +5,8 @@
       {{exam?.name}}
     </div>
     <div class="card-body text-bg-light">
-      <a [routerLink]="['/startExam',exam.id]" [routerLinkActive]="'text-warning'"
-        [routerLinkActiveOptions]="{exact:true}" (click)="startExam()" class="btn btn-success col-6">start exam</a>
+      <a (click)="startExam(exam.id,$event)" class="btn btn-success col-6">start
+        exam</a>
     </div>
   </div>
 </div>

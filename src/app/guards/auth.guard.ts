@@ -24,18 +24,25 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.userservice.loginServiceGet().pipe(
-      map((response: any) => {
-        const user = response;
-        if (user?.role === 'student') {
-          console.log(user);
-          return true;
-        } else {
-          console.log(user);
-          this.route.navigate(['/login']);
-          return false;
-        }
-      })
-    );
+    if (this.userservice.isLoggedin()) {
+      return true;
+    } else {
+      this.route.navigate(['/login']);
+      return false;
+    }
   }
 }
+
+// return this.userservice.loginServiceGet().pipe(
+//   map((response: any) => {
+//     const user = response;
+//     if (user?.role === 'student') {
+//       console.log(user);
+//       return true;
+//     } else {
+//       console.log(user);
+//       this.route.navigate(['/login']);
+//       return false;
+//     }
+//   })
+// );

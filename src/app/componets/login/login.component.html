@@ -6,7 +6,7 @@
         <img src="assets/imgs/6.png" class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (submit)="formSubmit($event)">
 
 
           <!-- user input -->
@@ -14,7 +14,7 @@
             <label class="form-label" for="form3Example3">User Name</label>
             <input formControlName="userName" type="text" id="form3Example3" class="form-control form-control-lg"
               placeholder="Enter a valid email address" />
-            <ng-container *ngIf="usernameControl.touched">
+            <ng-container *ngIf="usernameControl.touched || loginFlag==false">
               <div *ngIf="usernameControl.hasError('required')" class="text-danger">
                 user name is required
               </div>
@@ -32,11 +32,11 @@
               placeholder="Enter password" />
 
             <ng-container *ngIf="passwordControl.touched">
-              <div *ngIf="passwordControl.hasError('required')" class="text-danger">
+              <div *ngIf="passwordControl.hasError('required')  && loginFlag!==false" class="text-danger">
                 password is required
               </div>
 
-              <div *ngIf="loginFlag == false && !passwordControl.hasError('required')" class="text-danger">
+              <div *ngIf="loginFlag === false && passwordControl.hasError('required') " class="text-danger">
                 invalid user name or password
               </div>
             </ng-container>
@@ -54,8 +54,8 @@
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"
-              (click)="formSubmit($event)">Login</button>
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a class="link-danger"
                 [routerLink]="['/register']">Register</a>
             </p>

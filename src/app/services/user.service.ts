@@ -17,19 +17,30 @@ export class UserService {
     return this.httpClient.get(`${this.apiUrl}`);
   }
 
-  getUsersById(id: any) {
-    return this.httpClient.get(`${this.apiUrl}/${id}`);
+  getUsersByUserName(userName: any) {
+    return this.httpClient.get(`${this.apiUrl}/${userName}`);
   }
 
   AddUser(user: any) {
     //return this.httpClient.post(`${this.apiUrl}users`, user);
     return this.httpClient.post(`${this.apiUrl}`, user);
   }
-  loginService(model: any) {
-    return this.httpClient.put<any>(`${this.apiLogin}`, model);
+
+  isLoggedin() {
+    return sessionStorage.getItem('userName');
   }
 
-  loginServiceGet() {
-    return this.httpClient.get(this.apiLogin);
+  isStudent() {
+    let role = sessionStorage.getItem('role');
+    if (role === 'student') return true;
+    else return false;
   }
+
+  // loginService(model: any) {
+  //   return this.httpClient.put<any>(`${this.apiLogin}`, model);
+  // }
+
+  // loginServiceGet() {
+  //   return this.httpClient.get(this.apiLogin);
+  // }
 }

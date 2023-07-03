@@ -21,11 +21,15 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
-    const model = {
-      username: '',
-      role: '',
-    };
+    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('role');
     this.data = null;
-    this.userService.loginService(model).subscribe();
   }
 }
+
+// const model = {
+//   username: '',
+//   role: '',
+// };
+// this.data = null;
+// this.userService.loginService(model).subscribe();

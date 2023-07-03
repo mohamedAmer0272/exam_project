@@ -15,10 +15,10 @@
           <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">about us</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['/contact']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">contact us </a>
-        </li>
+        </li> -->
         <li class="nav-item" *ngIf="data?.role!='admin'">
           <a class="nav-link" [routerLink]="['/takeExam']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">take exam </a>
@@ -33,13 +33,13 @@
       </ul>
       <ul class="navbar-nav me-5">
         <li class="nav-item">
-          <a class="nav-link" href="#">{{data?.username}}</a>
+          <a class="nav-link" href="#">{{data?.userName}}</a>
         </li>
         <li class="nav-item">
-          <a *ngIf="data?.role==null" class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'text-warning'"
+          <a *ngIf="data?.role===null" class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">login</a>
         </li>
-        <li *ngIf="data?.role!=null" class="nav-item">
+        <li *ngIf="data?.role!==null" class="nav-item">
           <a (click)="logout()" class="nav-link" [routerLink]="['/login']" [routerLinkActive]="'text-warning'"
             [routerLinkActiveOptions]="{exact:true}">logout</a>
         </li>
